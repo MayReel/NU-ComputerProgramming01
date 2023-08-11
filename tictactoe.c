@@ -1,5 +1,6 @@
 //I MUST USE POINTER LMAO
 #include <stdio.h>
+#include <ctype.h>
 //Tictactoe
 
 int process(int x, int a, char arr[3][3]);
@@ -19,8 +20,8 @@ int main() {
     int pick, x;
     printf("Which player do you want to get the first pick? (Player 1: 1, Player 2: 2): ");
     scanf("%d", &pick);
-
-    while (1) {
+    if(pick == 1 || pick == 2){
+        while (1) {
         if (pick == 1) {
             printf("Player 1 (X): Choose the number: ");
             scanf("%d", &x);
@@ -45,6 +46,11 @@ int main() {
             break;
         }
     }
+    }
+    else{
+        printf("Invalid");
+    }
+
 
     return 0;
 }
@@ -53,7 +59,7 @@ int main() {
 int process(int x, int a, char arr[3][3]) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            if ((x < 0 || x > 9) || (arr[i][j] == 'X' || arr[i][j] == 'O')) {
+            if ((x < 0 && x > 9) && (arr[i][j] == 'X' && arr[i][j] == 'O')) {
                 printf("Invalid position\n");
             } else {
                 choosePosition(x, a, arr);
